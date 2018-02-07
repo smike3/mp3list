@@ -1,0 +1,7 @@
+<?php //implode($this->messages); ?>
+<?php echo $this->message; ?>
+<?php echo $this->form; ?>
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Admin</b> and script/action name <b>login</b></p>
+</div>

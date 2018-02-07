@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title><?php echo $this->escape($this->title); ?></title>
+</head>
+<body>
+    <h1><?php echo $this->escape($this->title); ?></h1>
+<?php //print_r($this->alb); ?>
+<?php foreach($this->alb as $val)
+			{
+			foreach($val as $vall)
+				{
+				echo $this->escape($vall);
+				echo " ";
+				}
+			echo "<br>\n";
+			}
+?>
+<?php //print_r($this->item); ?>
+</body>
+</html>

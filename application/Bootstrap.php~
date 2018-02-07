@@ -1,0 +1,20 @@
+<?php
+
+class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
+{
+protected function _initLocale()
+	{
+	try{
+		$locale=new Zend_Locale('browser');
+		}
+	catch(Zend_Locale_Exception $e)
+		{
+		$locale=new Zend_Locale('ru_RU');
+		}
+	$registry=Zend_Registry::getInstance();
+	$registry->set('Zend_Locale',$locale);
+	echo $locale->getLanguage();
+	}
+
+}
+
