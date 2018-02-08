@@ -13,7 +13,7 @@ protected function _initLocale()
 		}
 	$registry=Zend_Registry::getInstance();
 	$registry->set('Zend_Locale',$locale);
-	echo $locale->getLanguage();
+//	echo $locale->getLanguage();
 	$translateValidators = array(
                        Zend_Validate_Alnum::INVALID=>'Недопустимое имя',
 			Zend_Validate_Alnum::NOT_ALNUM=>'Недопустимые символы',

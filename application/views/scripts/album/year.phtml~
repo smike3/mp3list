@@ -1,0 +1,35 @@
+<?php echo $this->render('top_a.phtml'); ?>
+<?php if($this->page==0) foreach($this->a_year as $val)
+			{
+				echo "<a href=\"".$this->url(array(),'album-year')."/".$this->escape($val)."\">";
+				echo $this->escape($val)."</a>";
+			echo "<br>\n";
+			}
+	else
+		{?>
+<table>
+<?php
+		foreach($this->a_year as $val)
+			{
+?>
+<tr>
+<?php
+			foreach($val as $vall)
+				{ ?>
+<td>
+				<?php echo $this->escape($vall); ?>
+</td>
+		<?php		//echo " ";
+				} 
+//			echo "<br>\n"; ?>
+</tr>
+<?php
+			}
+		}
+?>
+</table>
+<br /><br />
+<div id="view-content">
+	<p>View script for controller <b>Album</b> and script/action name <b>year</b></p>
+</div>
+<?php echo $this->render('bottom_a.phtml'); ?>

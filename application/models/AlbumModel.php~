@@ -21,9 +21,61 @@ public function fetchAll()
 			$res->data_seek($c);
 			$add_tr=$res->fetch_row();
 			for($cc=0;$cc<3;$cc++) $ret_arr[$c][$cc]=$add_tr[$cc];
-			echo "<p>";
+		//	echo "<p>";
 			}
 	return $ret_arr;
+	}
+public function fetch_years()
+	{
+	$sql="select distinct year from album";
+	if($res=$this->mys->query($sql))
+		for($c=0;$c<$res->num_rows;$c++)
+			{
+			$res->data_seek($c);
+			$add_tr=$res->fetch_row();
+			$ret_arr[$c]=$add_tr[0];
+		//	echo "<p>";
+			}
+	return $ret_arr;
+	}
+public function fetch_year($year)
+	{
+	$sql="select distinct artist.name,album.name from artist,album,title where title.id_alb=album.id and title.id_art=artist.id and album.year=".$year." order by artist.name";
+	if($res=$this->mys->query($sql))
+		for($c=0;$c<$res->num_rows;$c++)
+			{
+			$res->data_seek($c);
+			$add_tr=$res->fetch_row();
+			for($cc=0;$cc<2;$cc++) $ret_arr[$c][$cc]=$add_tr[$cc];
+		//	echo "<p>";
+			}	
+	return $ret_arr;	
+	}
+public function fetch_artists()
+	{
+	$sql="select distinct name,id from artist order by name";
+	if($res=$this->mys->query($sql))
+		for($c=0;$c<$res->num_rows;$c++)
+			{
+			$res->data_seek($c);
+			$add_tr=$res->fetch_row();
+			for($cc=0;$cc<2;$cc++) $ret_arr[$c][$cc]=$add_tr[$cc];
+		//	echo "<p>";
+			}
+	return $ret_arr;
+	}
+public function fetch_artist($id)
+	{
+	$sql="select distinct album.name,album.id from album,artist,title where title.id_art=artist.id and title.id_alb=album.id and artist.id=".$id;
+	if($res=$this->mys->query($sql))
+		for($c=0;$c<$res->num_rows;$c++)
+			{
+			$res->data_seek($c);
+			$add_tr=$res->fetch_row();
+			$for($cc=0;$cc<2;$cc++) $ret_arr[$c][$cc]=$add_tr[$cc];
+		//	echo "<p>";
+			}	
+	return $ret_arr;	
 	}
 }
 

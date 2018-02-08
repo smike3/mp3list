@@ -4,16 +4,18 @@
 </head>
 <body>
     <h1><?php echo $this->escape($this->title); ?></h1>
+<a href="<?php echo $this->escape($this->year) ?>">По годам</a>
+<a href="<?php echo $this->escape($this->album) ?>">По альбомам</a>
 <?php //print_r($this->alb); ?>
-<?php foreach($this->alb as $val)
+<?php /*foreach($this->alb as $val)
 			{
 			foreach($val as $vall)
 				{
-				echo $vall;
+				echo $this->escape($vall);
 				echo " ";
 				}
 			echo "<br>\n";
-			}
+			}*/
 ?>
 <?php //print_r($this->item); ?>
 </body>
