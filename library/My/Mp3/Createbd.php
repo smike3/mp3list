@@ -33,9 +33,17 @@ class My_Mp3_Createbd
 		}
 	return $list_mp3;
 	}
-
+	public function clear_bd()
+	{
+	$sql=array("truncate table artist","truncate table title","truncate table album");
+	$mys= new mysqli("localhost","smike","asdfg","php_test");
+	if($mys->connect_errno)	die("<p>Ошибка подключения к БД:".$mys->connect_error."</p>");
+	for($i=0;$i<3;$i++) $res=$mys->real_query($sql[$i]);
+	$mys->close();
+	}
 	public function fill_bd_mp3($list_mp3,$album_flag)
 	{
+	
 	$mys= new mysqli("localhost","smike","asdfg","php_test");
 	if($mys->connect_errno)	die("<p>Ошибка подключения к БД:".$mys->connect_error."</p>");
 	$id3 = new getID3;
@@ -77,11 +85,18 @@ class My_Mp3_Createbd
 					}
 			}
 		}
+	$mys->close();
 	}
 	public function fill_bd($path,$album_flag)
 	{
 	$this->ldir=$this->fill_array_dir($this->c,$path,$this->ldir);
 	$this->lmp=$this->fill_array_mp3($this->ldir);
 	$this->fill_bd_mp3($this->lmp,$album_flag);
+	}
+	public function clear()
+	{
+	$this->c=0;
+	$this->ldir=array();
+	$this->lmp=array();
 	}
 }

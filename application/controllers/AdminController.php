@@ -74,13 +74,14 @@ class AdminController extends Zend_Controller_Action
 	if($this->getRequest()->isPost())
 		if($form->isValid($this->getRequest()->getPost()))
 			{
-			$crmp=new My_Mp3_Createbd();
+		//	$crmp=new My_Mp3_Createbd();
 			//$c=0;
 		//	$ldir=array();
 		//	$ldir=$crmp->fill_array_dir($c,"/home/smike/mp3s/",$ldir);
 		//	$lmp=$crmp->fill_array_mp3($ldir);
 			//$crmp->fill_bd_mp3($lmp);
-			$crmp->fill_bd("/home/smike/mp3s/",0);
+	exec("php /home/smike/WWW/mp3list/library/My/Mp3/long_pr.php > /dev/null &");
+		//	$crmp->fill_bd("/home/smike/2cd/",0);
 		//	print_r($lmp);
 			$this->_helper->getHelper('FlashMessenger')
 					->addMessage('Генерация бд началась');

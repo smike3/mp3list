@@ -14,12 +14,12 @@ class AdminController extends Zend_Controller_Action
 	$url=str_replace("/","",$url);
 	echo $url;
 	if($url!="adminlogin")
-	if(!Zend_Auth::getInstance()->hasIdentity())
-		{
-		Zend_Auth::getInstance()->clearIdentity();
-		Zend_Session::destroy();
-		$this->_redirect('/admin/login/');
-		}
+		if(!Zend_Auth::getInstance()->hasIdentity())
+			{
+			Zend_Auth::getInstance()->clearIdentity();
+			Zend_Session::destroy();
+			$this->_redirect('/admin/login/');
+			}
     }
 
     public function indexAction()
@@ -74,13 +74,14 @@ class AdminController extends Zend_Controller_Action
 	if($this->getRequest()->isPost())
 		if($form->isValid($this->getRequest()->getPost()))
 			{
-			$crmp=new My_Mp3_Createbd();
+		//	$crmp=new My_Mp3_Createbd();
 			//$c=0;
 		//	$ldir=array();
 		//	$ldir=$crmp->fill_array_dir($c,"/home/smike/mp3s/",$ldir);
 		//	$lmp=$crmp->fill_array_mp3($ldir);
 			//$crmp->fill_bd_mp3($lmp);
-			$crmp->fill_bd("/home/smike/mp3s/",0);
+	exec("php /home/smike/WWW/mp3list/library/My/Mp3/long_pr.php > /tmp/333333 &");
+		//	$crmp->fill_bd("/home/smike/2cd/",0);
 		//	print_r($lmp);
 			$this->_helper->getHelper('FlashMessenger')
 					->addMessage('Генерация бд началась');
